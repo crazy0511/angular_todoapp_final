@@ -1,0 +1,16 @@
+<table>
+    <div class="head">
+        <span class="width-5" scope="col"></span>
+        <span class="width-10" scope="col">Title</span>
+        <span class="width-20" scope="col">Deadline</span>
+        <span class="width-35" scope="col">Content</span>
+        <span class="width-10" scope="col">Status</span>
+        <span class="width-20" scope="col"></span>
+    </div>
+
+    <app-todo-item 
+        *ngFor="let todo of todos$ | async"
+        [todo]="todo"
+    >
+    </app-todo-item>    
+</table>

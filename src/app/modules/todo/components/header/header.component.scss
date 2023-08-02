@@ -1,0 +1,17 @@
+.title {
+    color: #FF3399;
+    margin-top: 10px;
+    font-size: 50px;
+    font-family: 'Pacifico', cursive;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.left-button, .right-button {
+    width: 90px;
+}
