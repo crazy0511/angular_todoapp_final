@@ -1,0 +1,43 @@
+button {
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    margin-right: 5px;
+    text-transform: capitalize;
+}
+
+.edit {
+    background-color: #0099FF;
+}
+
+.delete {
+    background-color: #FF0033;
+}
+
+.add {
+    background-color: #009900;
+}
+
+.all {
+    width: 80px;
+    background-color: #FF9933;
+
+}
+
+.active {
+    width: 80px;
+    background-color: #FF9933;
+}
+
+.completed {
+    width: 80px;
+    background-color: #FF9933;
+}
+
+.clearCompleted {
+    width: 130px;
+    background-color: #FF0033;
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { ITodo } from '../models/todo.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, filter } from 'rxjs';
 import { EFilter } from '../models/filter.model';
 
 @Injectable({
@@ -20,6 +20,13 @@ export class TodoService {
   public todo$: Observable<ITodo[]> = this.displayTodosSubject.asObservable();
   public length$: Observable<number> = this.lengthSubject.asObservable();
 
+  private allLength = new BehaviorSubject<number>(0);
+  allLength$ = this.allLength.asObservable();
+  private currentLength = new BehaviorSubject<number>(0);
+  currentLength$ = this.currentLength.asObservable();
+  private nameStatus = new BehaviorSubject<string>('active');
+  nameStatus$ = this.nameStatus.asObservable();
+
   constructor(private api: ApiService) {
     this.todo = {
       title: '',
@@ -36,15 +43,46 @@ export class TodoService {
       this.changeStatus();
       this.filterTodos = [...this.todos];
       this.updateTodosShow();
+      this.allLength.next(this.todos.length);
+      this.currentLength.next(this.todos.filter(todo => !todo.isCompleted).length);
     });
   }
 
-  private updateTodosShow(){
+  updateTodosShow(){
     this.displayTodosSubject.next(this.filterTodos);
     this.lengthSubject.next(this.todos.length);
   }
 
-  private changeStatus(){
+  filterTodo(filter: EFilter){
+    this.currentFilter = filter;
+    switch(this.currentFilter){
+      case EFilter.Active:
+        this.filterTodos = this.todos.filter(todo => !todo.isCompleted);
+        this.currentLength.next(this.filterTodos.length);
+        this.nameStatus.next('active');
+        console.log('filterTodos sau khi Active: ', this.filterTodos);
+        break;
+      case EFilter.Completed:
+        this.filterTodos = this.todos.filter(todo => todo.isCompleted);
+        this.currentLength.next(this.filterTodos.length);
+        this.nameStatus.next('completed');
+        console.log('filterTodos sau khi Completed: ', this.filterTodos);
+        break;
+      case EFilter.All:
+        this.filterTodos = [...this.todos];
+        this.currentLength.next(this.todos.filter(todo => !todo.isCompleted).length);
+        this.nameStatus.next('active');
+        console.log('filterTodos sau khi All: ', this.filterTodos);
+        break;
+      default: 
+        this.filterTodos = [...this.todos];
+        this.currentLength.next(this.todos.filter(todo => !todo.isCompleted).length);
+        this.nameStatus.next('active');
+    } 
+    this.updateTodosShow();
+  }
+
+  changeStatus(){
     for(const todo of this.todos){
       const currentTime = new Date();
       const deadlineTime = new Date(todo.deadline);
@@ -57,6 +95,9 @@ export class TodoService {
         else if(differenceTime <= 0){
           todo.status = 'Overdue';
         }
+        else{
+          todo.status = 'Active';
+        }
       } else todo.status = 'Completed';
       if(todo.id != null){
         this.api.updateTodo(todo, todo.id);
@@ -64,7 +105,6 @@ export class TodoService {
       this.api.getTodos();
     }
   }
-
 
   addTodo(todo: ITodo){
     this.todo = todo;

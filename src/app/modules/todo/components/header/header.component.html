@@ -1,5 +1,9 @@
 <h1 class="title">TodoApp</h1>
 <div class="buttons">
-    <button class="left-button">Button 1</button>
-    <button class="right-button">Button 2</button>
+    <div class="buttonLeft">
+        <app-filter-todo></app-filter-todo>
+    </div>
+    <div class="buttonRight">
+        <app-trudi-button [buttonName]="'add'"></app-trudi-button>
+    </div>
 </div>

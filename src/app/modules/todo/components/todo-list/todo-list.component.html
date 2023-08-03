@@ -8,9 +8,11 @@
         <span class="width-20" scope="col"></span>
     </div>
 
-    <app-todo-item 
-        *ngFor="let todo of todos$ | async"
-        [todo]="todo"
-    >
-    </app-todo-item>    
+    <div class="todo-item">
+        <app-todo-item 
+            *ngFor="let todo of todos$ | async"
+            [todo]="todo"
+        >
+        </app-todo-item>     
+    </div>
 </table>

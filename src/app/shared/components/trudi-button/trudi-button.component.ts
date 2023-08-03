@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-trudi-button',
@@ -9,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./trudi-button.component.scss']
 })
 export class TrudiButtonComponent {
+  @Input() buttonName!: string;
 
+  // @Output() eventClick = new EventEmitter<>();
 }

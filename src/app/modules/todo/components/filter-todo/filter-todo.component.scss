@@ -1,0 +1,24 @@
+.filter{
+    margin: 0% 0% 50% -23%;
+}
+  
+.filter-btn{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 0.25rem;
+    transition: 250ms all ease-in-out;
+    outline: none;
+    cursor: pointer;
+    margin-right: white;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+  
+.filter-btn:hover{
+    border-color: burlywood;
+}
+  
+.filter-btn.active{
+    border-color: red;
+    color: red;
+}

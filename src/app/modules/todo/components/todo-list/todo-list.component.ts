@@ -13,22 +13,10 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoService: TodoService){}
 
+  // Gọi ra todos$ trong TodoService
   ngOnInit(): void {
     this.todoService.getTodosFromApiService();
     this.todos$ = this.todoService.todo$;
+    // this.todos$.subscribe(todo => console.log("todo: ", todo));
   }
-
-  // onChangeCheckbox(todo: ITodo){
-  //   this.todoService.changeIsCompleted(todo.id, todo.isCompleted);
-  // }
-
-  // onEditTodo(todo: ITodo){
-  //   this.todoService.editTodo(todo);
-  // }
-
-  // onDeleteTodo(todo: ITodo){
-  //   this.todoService.deleteTodo(todo.id);
-  // }
-
-
 }

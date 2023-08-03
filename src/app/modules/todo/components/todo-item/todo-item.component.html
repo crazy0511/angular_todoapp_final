@@ -1,13 +1,18 @@
 <div class="body width-100">
     <span class="width-5" scope="col">
-        <input type="checkbox" id="myCheckbox">
+        <app-trudi-checkbox
+            [id]="todo.id"
+            [isCompleted]="todo.isCompleted"  
+            (__changeIsCompleted)="changeIsCompleted($event)"    
+        >
+        </app-trudi-checkbox>
     </span>
     <span class="width-10" scope="col">{{todo.title}}</span>
     <span class="width-20" scope="col">{{todo.deadline}}</span>
     <span class="width-35" scope="col">{{todo.content}}</span>
-    <span class="width-10" scope="col">{{todo.status}}</span>
+    <span class="width-10" scope="col" [style.color]="getColorStatus(todo.status)">{{todo.status}}</span>
     <span class="width-20" scope="col">
-        <button>Edit</button>
-        <button>Delete</button>
+        <app-trudi-button [buttonName]="'edit'"></app-trudi-button>
+        <app-trudi-button [buttonName]="'delete'"></app-trudi-button>
     </span>
 </div>

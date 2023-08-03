@@ -4,7 +4,7 @@
       "title": "Play",
       "deadline": "11/11/2023 11:21",
       "content": "Chơi phai phai",
-      "isCompleted": false,
+      "isCompleted": true,
       "status": "Active",
       "id": 1
     },
@@ -13,24 +13,56 @@
       "deadline": "11/11/2023 11:01",
       "content": "English",
       "isCompleted": false,
-      "status": "Active",
+      "status": "Completed",
       "id": 2
     },
     {
       "title": "Play",
       "deadline": "11/11/2023 11:31",
       "content": "Chơi liên quân, Chơi liên quân",
-      "isCompleted": false,
+      "isCompleted": true,
       "status": "Active",
       "id": 3
     },
     {
       "title": "Workout",
-      "deadline":"11/11/2023 11:11",
+      "deadline": "11/11/2023 11:11",
+      "content": "100 push-up",
+      "isCompleted": true,
+      "status": "Active",
+      "id": 4
+    },
+    {
+      "title": "Play",
+      "deadline": "11/11/2023 11:21",
+      "content": "Chơi phai phai",
+      "isCompleted": true,
+      "status": "Completed",
+      "id": 5
+    },
+    {
+      "title": "Learn",
+      "deadline": "11/11/2023 11:01",
+      "content": "English",
+      "isCompleted": true,
+      "status": "Active",
+      "id": 6
+    },
+    {
+      "title": "Play",
+      "deadline": "11/11/2023 11:31",
+      "content": "Chơi liên quân, Chơi liên quân",
+      "isCompleted": true,
+      "status": "Active",
+      "id": 7
+    },
+    {
+      "title": "Workout",
+      "deadline": "11/11/2023 11:11",
       "content": "100 push-up",
       "isCompleted": false,
       "status": "Active",
-      "id": 4
+      "id": 8
     }
   ]
 }
