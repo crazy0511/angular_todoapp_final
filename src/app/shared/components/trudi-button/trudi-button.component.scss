@@ -7,6 +7,7 @@ button {
     font-size: 14px;
     margin-right: 5px;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 .edit {
@@ -21,20 +22,17 @@ button {
     background-color: #009900;
 }
 
-.all {
-    width: 80px;
-    background-color: #FF9933;
-
+.all, .active, .completed {
+    width: 100px;
+    background-color: #6666CC;
+    color: #220000;
+    font-size: 14px;
 }
 
-.active {
-    width: 80px;
-    background-color: #FF9933;
-}
-
-.completed {
-    width: 80px;
-    background-color: #FF9933;
+.clickButton {
+    border: 2px solid #0099CC;
+    color: #000022;
+    font-size: 16px;
 }
 
 .clearCompleted {

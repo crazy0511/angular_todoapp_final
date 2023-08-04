@@ -10,6 +10,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TrudiButtonComponent {
   @Input() buttonName!: string;
-
-  // @Output() eventClick = new EventEmitter<>();
+  @Input() isClick!: boolean;
 }

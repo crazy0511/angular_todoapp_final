@@ -1,16 +1,9 @@
 <div class="filter">
-    <!-- <button
-      type="button" class="filter-btn"
-      *ngFor="let btn of filterButtons"
-      [ngClass]="{ active: btn.isActive }"
-      (click)="filter(btn.type)"
-    >
-      {{ btn.label }}
-    </button> -->
-
     <app-trudi-button
       *ngFor="let btn of filterButtons"
       [buttonName]="btn.label"
+      (click)="filter(btn.type)"
+      [isClick]="btn.isActive"
     >
     </app-trudi-button>
 </div>
