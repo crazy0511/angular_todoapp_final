@@ -9,13 +9,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public todos$!: Observable<ITodo[]>;
+
+  public isAdd: boolean = true;
+  public isUpdate: boolean = false;
+
+  // public todos$!: Observable<ITodo[]>;
 
   constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
     this.todoService.getTodosFromApiService();
-    this.todos$ = this.todoService.todo$;
+    // this.todos$ = this.todoService.todo$;
     // this.todos$.subscribe(todo => console.log("todo: ", todo));
   }
 

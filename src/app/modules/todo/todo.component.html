@@ -1,7 +1,12 @@
-<div class="container">
-    <app-header class="header"></app-header>
-
-    <app-todo-list class="main"></app-todo-list>
-
-    <app-footer class="footer"></app-footer>
+<div class="todo-app">
+    <div class="container">
+        <app-header class="header"></app-header>
+    
+        <app-todo-list class="main"></app-todo-list>
+    
+        <app-footer class="footer"></app-footer>
+    </div>
 </div>
+
+<app-add-edit-modal *ngIf="openAddEditModal"></app-add-edit-modal>
+<app-delete-clear-modal *ngIf="openDeleteClearModal"></app-delete-clear-modal>

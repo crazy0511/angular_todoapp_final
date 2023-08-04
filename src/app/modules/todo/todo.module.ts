@@ -12,6 +12,10 @@ import { TrudiButtonComponent } from 'src/app/shared/components/trudi-button/tru
 import { FilterTodoComponent } from './components/filter-todo/filter-todo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { AddEditTodoComponent } from './components/add-edit-todo/add-edit-todo.component';
+import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
+import { DeleteClearModalComponent } from './components/delete-clear-modal/delete-clear-modal.component';
+import { DeleteTodoComponent } from './components/delete-todo/delete-todo.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { CounterComponent } from './components/counter/counter.component';
     FilterTodoComponent,
     FooterComponent,
     CounterComponent,
+    AddEditTodoComponent,
+    AddEditModalComponent,
+    DeleteClearModalComponent,
+    DeleteTodoComponent,
   ],
   imports: [
     BrowserModule,

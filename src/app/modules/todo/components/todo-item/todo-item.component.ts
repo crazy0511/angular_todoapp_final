@@ -8,6 +8,9 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent{
+  public isAdd: boolean = false;
+  public isUpdate: boolean = true;
+
   @Input() todo!: ITodo;
 
   constructor(private todoService: TodoService){}

@@ -4,6 +4,9 @@
         <app-filter-todo></app-filter-todo>
     </div>
     <div class="buttonRight">
-        <app-trudi-button [buttonName]="'add'"></app-trudi-button>
+        <app-add-edit-todo
+            [isAdd]="isAdd"
+            [isUpdate]="isUpdate"
+        ></app-add-edit-todo>
     </div>
 </div>
