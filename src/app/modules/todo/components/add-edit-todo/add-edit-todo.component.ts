@@ -9,16 +9,13 @@ import { TodoService } from '../../services/todo.service';
 export class AddEditTodoComponent {
   @Input() isAdd!: boolean;
   @Input() isUpdate!: boolean;
-  
-  // Truyền giá trị vào cho clickAdd = true
-  clickedButtonAdd(){
-    this.todoService.setClickAdd();
-  }
-
-  // Truyền giá trị vào cho clickUpdate = true
-  clickedButtonUpdate(){
-    this.todoService.setClickUpdate();
-  }
 
   constructor(private todoService: TodoService){}
+  
+  clickedButtonAdd(){
+    this.todoService.setClickAddEditModal();
+  }
+  clickedButtonUpdate(){
+    this.todoService.setClickAddEditModal();
+  }
 }

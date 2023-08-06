@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from '../../services/todo.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -9,30 +9,23 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./add-edit-modal.component.scss']
 })
 export class AddEditModalComponent implements OnInit, OnDestroy{
+  private unsubcribe$ = new Subject<void>();
+  
   public isAdd: boolean = false;
   public isUpdate: boolean = false;
   public showModal: boolean = false;
-  private unsubcribe$ = new Subject<void>();
 
   constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
-    this.todoService.openAddEditModal$.pipe(takeUntil(this.unsubcribe$)).subscribe((opentModal) => {
-      this.isAdd = opentModal;
-      if(this.isAdd){
-        this.showModal = true;
-      }
+    this.todoService.openAddEditModal$.subscribe((value) => {
+      this.showModal = value;
     })
-  }
-  
-  ngOnDestroy(): void {
-    this.unsubcribe$.next();
-    this.unsubcribe$.complete();
   }
 
   closeModal(){
     this.showModal = false;
-    console.log('showModal sau khi click close: ', this.showModal);
+    this.todoService.setCloseAddEditModal();
   }
 
   // Tạo formValue kiểu dữ liệu FromGroup
@@ -71,14 +64,19 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     return this.formValue.get('content');
   }
 
-  // clickAddTodo() {
-  //   this.formValue.reset();
-  //   this.showAdd = true;
-  //   this.showUpdate = false;
-  // }
+  clickAddTodo() {
+    this.formValue.reset();
+    this.isAdd = true;
+    this.isUpdate = false;
+  }
 
-  // clickUpdateTodo() {
-  //   this.showAdd = false;
-  //   this.showUpdate = true;
-  // }
+  clickUpdateTodo() {
+    this.isAdd = false;
+    this.isUpdate = true;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubcribe$.next();
+    this.unsubcribe$.complete();
+  }
 }

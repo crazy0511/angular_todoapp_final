@@ -19,18 +19,26 @@ button {
 }
 
 .add {
-    background-color: #009900;
+    background-color: #00CC00;
+    border: 1px solid #007700;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cancel {
+    background-color: #888888;
+    border: 1px solid #777777;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .all, .active, .completed {
     width: 100px;
-    background-color: #3399CC;
+    background-color: #0099FF;
     color: #220000;
     font-size: 14px;
 }
 
 .clickButton {
-    border: 2px solid #0066CC;
+    border: 2px solid #0033FF;
     color: #000022;
     font-size: 16px;
 }

@@ -14,8 +14,8 @@ export class TodoComponent implements OnInit {
   constructor(private todoService: TodoService){}
 
   ngOnInit(): void{
-    // this.todoService.openAddEditModal$.subscribe((value) => {
-    //   this.openAddEditModal = value;
-    // })
+    this.todoService.openAddEditModal$.subscribe((value) => {
+      this.openAddEditModal = value;
+    })
   }
 }

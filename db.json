@@ -4,8 +4,8 @@
       "title": "Play",
       "deadline": "11/11/2023 11:21",
       "content": "Chơi phai phai",
-      "isCompleted": true,
-      "status": "Active",
+      "isCompleted": false,
+      "status": "Completed",
       "id": 1
     },
     {
@@ -20,8 +20,8 @@
       "title": "Play",
       "deadline": "11/11/2023 11:31",
       "content": "Chơi liên quân, Chơi liên quân",
-      "isCompleted": false,
-      "status": "Completed",
+      "isCompleted": true,
+      "status": "Active",
       "id": 3
     },
     {
@@ -36,8 +36,8 @@
       "title": "Play",
       "deadline": "11/11/2023 11:21",
       "content": "Chơi phai phai",
-      "isCompleted": false,
-      "status": "Completed",
+      "isCompleted": true,
+      "status": "Active",
       "id": 5
     },
     {
