@@ -1,4 +1,4 @@
-<div class="body width-100">
+<div class="body">
     <span class="width-5" scope="col">
         <app-trudi-checkbox
             [id]="todo.id"
@@ -8,13 +8,14 @@
         </app-trudi-checkbox>
     </span>
     <span class="width-10" scope="col">{{todo.title}}</span>
-    <span class="width-20" scope="col">{{todo.deadline}}</span>
-    <span class="width-35" scope="col">{{todo.content}}</span>
-    <span class="width-10" scope="col" [style.color]="getColorStatus(todo.status)">{{todo.status}}</span>
+    <span class="width-20" scope="col">{{todo.deadline | date:'dd/MM/yyyy HH:mm'}}</span>
+    <span class="width-30" scope="col">{{todo.content}}</span>
+    <span class="width-15" scope="col" [style.color]="getColorStatus(todo.status)">{{todo.status}}</span>
     <span class="width-20" scope="col">
         <app-add-edit-todo
             [isAdd]="isAdd"
             [isUpdate]="isUpdate"
+            (click)='setUpdate()'
         >
         </app-add-edit-todo>
 

@@ -12,22 +12,38 @@ button {
 
 .edit {
     background-color: #0099FF;
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }
 
 .delete {
     background-color: #FF0033;
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }
 
 .add {
     background-color: #00CC00;
     border: 1px solid #007700;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }
 
 .cancel {
     background-color: #888888;
     border: 1px solid #777777;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }
 
 .all, .active, .completed {
@@ -35,6 +51,10 @@ button {
     background-color: #0099FF;
     color: #220000;
     font-size: 14px;
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }
 
 .clickButton {
@@ -46,4 +66,8 @@ button {
 .clearCompleted {
     width: 130px;
     background-color: #FF0033;
+    transition: transform 0.3s ease;
+    &:hover{
+        transform: scale(1.05); 
+    }
 }

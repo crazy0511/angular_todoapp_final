@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { ITodo } from '../../models/todo.model';
 import { TodoService } from '../../services/todo.service';
 
@@ -14,6 +14,15 @@ export class TodoItemComponent{
   @Input() todo!: ITodo;
 
   constructor(private todoService: TodoService){}
+
+  setUpdate() {
+    this.todoService.setIsAddFalse();
+    this.todoService.setIsUpdateTrue();
+    if(this.todo.id == null){
+      return;
+    }
+    this.todoService.setTodo(this.todo);
+  }
 
   public newTodo!: ITodo; 
   changeIsCompleted(isCompleted: boolean){

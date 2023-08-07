@@ -12,7 +12,6 @@
           <form [formGroup]="formValue" class="form-group">
             <div>
               <label class="form-label">Title</label>
-              <!-- <input type="text" formControlName="title" class="form-control" required> -->
               <app-trudi-text-field 
                 [formControl]="formValue.controls['title']"
               >
@@ -28,7 +27,6 @@
   
             <div>
               <label class="form-label">Deadline</label>
-              <!-- <input type="datetime-local" formControlName="deadline" class="form-control" required> -->
               <app-trudi-date-picker
               [formControl]="formValue.controls['deadline']"
               >
@@ -46,7 +44,6 @@
   
             <div class="mb-3">
               <label class="form-label">Content</label>
-              <!-- <input type="text" formControlName="content" class="form-control" required> -->
               <app-trudi-text-field 
                 [formControl]="formValue.controls['content']"
               >
@@ -68,7 +65,15 @@
           >
           </app-trudi-button>
           <app-trudi-button
+            *ngIf="isAdd"
             [buttonName]="'add'"
+            (click)="postTodoDetails()" 
+          >
+          </app-trudi-button>
+          <app-trudi-button
+            *ngIf="isUpdate"
+            [buttonName]="'edit'"
+            (click)="updateTodoDetails()"
           >
           </app-trudi-button>
         </div>

@@ -9,14 +9,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
   public isAdd: boolean = true;
   public isUpdate: boolean = false;
-
+  
   constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
     this.todoService.getTodosFromApiService();
+  }
+
+  setAdd() {
+    this.todoService.setIsAddTrue();
+    this.todoService.setIsUpdateFalse();
   }
 
 }

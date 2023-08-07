@@ -27,11 +27,40 @@ export class TodoService {
   private nameStatus = new BehaviorSubject<string>('active');
   nameStatus$ = this.nameStatus.asObservable();
 
+  private todo_start: ITodo = {
+    id: 1,
+    title: '',
+    deadline: '',
+    content: '',
+    isCompleted: false,
+    status: '',
+  } 
+  private todo_ = new BehaviorSubject<ITodo>(this.todo_start);
+  todo_$ = this.todo_.asObservable();
+  setTodo(todo: ITodo){
+    this.todo_.next(todo);
+  }
+
+  private isAdd = new BehaviorSubject<boolean>(false);
+  isAdd$ = this.isAdd.asObservable();
+  setIsAddTrue() {
+    this.isAdd.next(true);
+  }
+  setIsAddFalse() {
+    this.isAdd.next(false);
+  }
+  
+  private isUpdate = new BehaviorSubject<boolean>(false);
+  isUpdate$ = this.isUpdate.asObservable();
+  setIsUpdateTrue() {
+    this.isUpdate.next(true);
+  }
+  setIsUpdateFalse() {
+    this.isUpdate.next(false);
+  }
+
   private openAddEditModal = new BehaviorSubject<boolean>(false);
   openAddEditModal$ = this.openAddEditModal.asObservable();
-  private openDeleteModal = new BehaviorSubject<boolean>(false);
-  openDeleteModal$ = this.openDeleteModal.asObservable();
-
   setClickAddEditModal(){
     this.openAddEditModal.next(true);
   }
@@ -39,10 +68,11 @@ export class TodoService {
     this.openAddEditModal.next(false);
   }
 
+  private openDeleteModal = new BehaviorSubject<boolean>(false);
+  openDeleteModal$ = this.openDeleteModal.asObservable();
   setClickDelete(){
     this.openDeleteModal.next(true);
   }
-
   setCloseClickDelete(){
     this.openDeleteModal.next(false);
   }
@@ -147,18 +177,16 @@ export class TodoService {
     if(this.todo.id == null){
       return;
     }
-    if(this.todo.title.trim() != '' && this.todo.deadline.trim() != '' && this.todo.content.trim() != ''){
-      this.api.updateTodo(this.todo, this.todo.id).subscribe({
-        next: () => {
-          const ref = document.getElementById('cancel');
-          ref?.click();
-          this.getTodosFromApiService();
-        },
-        error: () => {
-          alert('Something went wrong');
-        },
-      });
-    }
+    this.api.updateTodo(this.todo, this.todo.id).subscribe({
+      next: () => {
+        const ref = document.getElementById('cancel');
+        ref?.click();
+        this.getTodosFromApiService();
+      },
+      error: () => {
+        alert('Something went wrong');
+      },
+    });
   }
 
   deleteTodo(todo: ITodo){

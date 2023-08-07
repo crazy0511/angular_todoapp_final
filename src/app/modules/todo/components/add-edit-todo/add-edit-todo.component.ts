@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { ITodo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-add-edit-todo',
@@ -10,11 +11,13 @@ export class AddEditTodoComponent {
   @Input() isAdd!: boolean;
   @Input() isUpdate!: boolean;
 
-  constructor(private todoService: TodoService){}
+  constructor(private todoService: TodoService){
+  }
   
   clickedButtonAdd(){
     this.todoService.setClickAddEditModal();
   }
+
   clickedButtonUpdate(){
     this.todoService.setClickAddEditModal();
   }
