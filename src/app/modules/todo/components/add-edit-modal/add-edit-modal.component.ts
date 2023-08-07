@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { TodoService } from '../../services/todo.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ITodo } from '../../models/todo.model';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-edit-modal',
@@ -13,7 +12,6 @@ import { Title } from '@angular/platform-browser';
 export class AddEditModalComponent implements OnInit, OnDestroy{
   private unsubcribe$ = new Subject<void>();
   public showModal: boolean = false;
-
   public isAdd: boolean = false;
   public isUpdate: boolean = false;
   public todo!: ITodo;
@@ -72,18 +70,6 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
       Validators.required,
     ]),
   });
-  // formValue = new FormGroup({
-  //   title: new FormControl(this.getTodo.title, [
-  //     Validators.required,
-  //   ]),
-  //   deadline: new FormControl('', [
-  //     Validators.required,
-  //     this.compareCurrentTime,
-  //   ]),
-  //   content: new FormControl('Content', [
-  //     Validators.required,
-  //   ]),
-  // });
 
   // So sánh thời gian nhập với thời gian hiện tại
   compareCurrentTime(control: AbstractControl) {

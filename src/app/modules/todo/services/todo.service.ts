@@ -59,6 +59,24 @@ export class TodoService {
     this.isUpdate.next(false);
   }
 
+  private isDelete = new BehaviorSubject<boolean>(false);
+  isDelete$ = this.isUpdate.asObservable();
+  setIsDeleteTrue() {
+    this.isDelete.next(true);
+  }
+  setIsDeleteFalse() {
+    this.isDelete.next(false);
+  }
+
+  private isClear = new BehaviorSubject<boolean>(false);
+  isClear$ = this.isUpdate.asObservable();
+  setIsClearTrue() {
+    this.isClear.next(true);
+  }
+  setIsClearFalse() {
+    this.isClear.next(false);
+  }
+
   private openAddEditModal = new BehaviorSubject<boolean>(false);
   openAddEditModal$ = this.openAddEditModal.asObservable();
   setClickAddEditModal(){
@@ -68,13 +86,13 @@ export class TodoService {
     this.openAddEditModal.next(false);
   }
 
-  private openDeleteModal = new BehaviorSubject<boolean>(false);
-  openDeleteModal$ = this.openDeleteModal.asObservable();
-  setClickDelete(){
-    this.openDeleteModal.next(true);
+  private openDeleteClearModal = new BehaviorSubject<boolean>(false);
+  openDeleteClearModal$ = this.openDeleteClearModal.asObservable();
+  setClickDeleteClear(){
+    this.openDeleteClearModal.next(true);
   }
-  setCloseClickDelete(){
-    this.openDeleteModal.next(false);
+  setCloseDeleteClear(){
+    this.openDeleteClearModal.next(false);
   }
 
   constructor(private api: ApiService) {

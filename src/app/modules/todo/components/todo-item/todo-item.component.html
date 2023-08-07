@@ -15,10 +15,14 @@
         <app-add-edit-todo
             [isAdd]="isAdd"
             [isUpdate]="isUpdate"
-            (click)='setUpdate()'
+            (click)="setUpdate()"
         >
         </app-add-edit-todo>
 
-        <app-delete-todo></app-delete-todo>
+        <app-delete-clear-todo>
+            [isDelete]="isDelete"
+            [isClear]="isClear"
+            (click)="setDelete()"
+        </app-delete-clear-todo>
     </span>
 </div>

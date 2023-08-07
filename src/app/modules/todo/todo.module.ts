@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
-import { ClearCompletedTodoComponent } from './components/clear-completed-todo/clear-completed-todo.component';
 import { TrudiCheckboxComponent } from 'src/app/shared/components/trudi-checkbox/trudi-checkbox.component';
 import { TrudiButtonComponent } from 'src/app/shared/components/trudi-button/trudi-button.component';
 import { FilterTodoComponent } from './components/filter-todo/filter-todo.component';
@@ -15,9 +14,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { AddEditTodoComponent } from './components/add-edit-todo/add-edit-todo.component';
 import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
 import { DeleteClearModalComponent } from './components/delete-clear-modal/delete-clear-modal.component';
-import { DeleteTodoComponent } from './components/delete-todo/delete-todo.component';
 import { TrudiTextFieldComponent } from 'src/app/shared/components/trudi-text-field/trudi-text-field.component';
 import { TrudiDatePickerComponent } from 'src/app/shared/components/trudi-date-picker/trudi-date-picker.component';
+import { DeleteClearTodoComponent } from './components/delete-clear-todo/delete-clear-todo.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +24,13 @@ import { TrudiDatePickerComponent } from 'src/app/shared/components/trudi-date-p
     HeaderComponent,
     TodoListComponent,
     TodoItemComponent,
-    ClearCompletedTodoComponent,
     FilterTodoComponent,
     FooterComponent,
     CounterComponent,
     AddEditTodoComponent,
     AddEditModalComponent,
     DeleteClearModalComponent,
-    DeleteTodoComponent,
+    DeleteClearTodoComponent,
   ],
   imports: [
     BrowserModule,

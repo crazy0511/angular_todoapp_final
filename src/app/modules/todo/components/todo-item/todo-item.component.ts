@@ -10,6 +10,8 @@ import { TodoService } from '../../services/todo.service';
 export class TodoItemComponent{
   public isAdd: boolean = false;
   public isUpdate: boolean = true;
+  public isDelete: boolean = true;
+  public isClear: boolean = false;
 
   @Input() todo!: ITodo;
 
@@ -24,6 +26,12 @@ export class TodoItemComponent{
     this.todoService.setTodo(this.todo);
   }
 
+  setDelete(){
+    this.todoService.setClickDeleteClear();
+    this.todoService.setIsDeleteTrue();
+    this.todoService.setIsClearFalse();
+  }
+  
   public newTodo!: ITodo; 
   changeIsCompleted(isCompleted: boolean){
     this.todo.isCompleted = isCompleted;
