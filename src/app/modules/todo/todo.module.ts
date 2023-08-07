@@ -16,6 +16,8 @@ import { AddEditTodoComponent } from './components/add-edit-todo/add-edit-todo.c
 import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
 import { DeleteClearModalComponent } from './components/delete-clear-modal/delete-clear-modal.component';
 import { DeleteTodoComponent } from './components/delete-todo/delete-todo.component';
+import { TrudiTextFieldComponent } from 'src/app/shared/components/trudi-text-field/trudi-text-field.component';
+import { TrudiDatePickerComponent } from 'src/app/shared/components/trudi-date-picker/trudi-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { DeleteTodoComponent } from './components/delete-todo/delete-todo.compon
     CommonModule, 
     TrudiCheckboxComponent,
     TrudiButtonComponent,
+    TrudiTextFieldComponent,
+    TrudiDatePickerComponent,
   ],
   exports: [
     TodoComponent,
