@@ -16,7 +16,6 @@ export class TodoListComponent implements OnInit {
   // Gọi ra todos$ trong TodoService
   ngOnInit(): void {
     this.todoService.getTodosFromApiService();
-    this.todos$ = this.todoService.todo$;
-    // this.todos$.subscribe(todo => console.log("todo: ", todo));
+    this.todos$ = this.todoService.todos$;
   }
 }

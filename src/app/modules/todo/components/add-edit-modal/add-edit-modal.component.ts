@@ -41,12 +41,9 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     })
     this.todoService.isAdd$.subscribe((value) => {
       this.isAdd = value;
-      console.log('isAdd = ', this.isAdd);
     })
     this.todoService.isUpdate$.subscribe((value) => {
       this.isUpdate = value;
-      console.log('isUpdate = ', this.isUpdate);
-
     })
     this.todoService.todo_$.subscribe((value) => {
       this.getTodo = value;
@@ -59,6 +56,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
   closeModal(){
     this.showAddEditModal = false;
     this.todoService.setCloseAddEditModal();
+    this.formValue.reset();
   }
 
   formValue = new FormGroup({
@@ -97,7 +95,6 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
 
   postTodoDetails() {
     console.log('Khởi chạy chức năng Add');
-    this.closeModal();
     this.todo.id = new Date(Date.now()).getTime();
     if(this.formValue.value.title != null){
       this.todo.title = this.formValue.value.title; 
@@ -111,14 +108,15 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     this.statusValue(this.todo);
 
     if(this.todo.title.trim() != '' && this.todo.deadline.trim() != '' && this.todo.content.trim() != ''){
+      console.log('todo add = ', this.todo);
       this.todoService.addTodo(this.todo);
     }
-    this.formValue.reset();
+    this.closeModal();
+    this.todoService.setOpenAddToast();
   }
 
   updateTodoDetails() {
     console.log('Khởi chạy chức năng Edit');
-    this.closeModal();
     this.todo.id = this.getTodo.id;
     if(this.formValue.value.title != null){
       this.todo.title = this.formValue.value.title;
@@ -132,10 +130,11 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     this.statusValue(this.todo);
 
     if(this.todo.title.trim() != '' && this.todo.deadline.trim() != '' && this.todo.content.trim() != ''){
-      console.log('todo = ', this.todo);
+      console.log('todo update = ', this.todo);
       this.todoService.updateTodo(this.todo);
     }
-    this.formValue.reset();
+    this.closeModal();
+    this.todoService.setOpenUpdateToast();
   }
 
   statusValue(todo: ITodo){

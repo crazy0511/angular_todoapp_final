@@ -17,17 +17,17 @@ export class TodoService {
   private filterTodos!: ITodo[];
   private currentFilter!: EFilter;
 
-  public todo$: Observable<ITodo[]> = this.displayTodosSubject.asObservable();
+  public todos$: Observable<ITodo[]> = this.displayTodosSubject.asObservable();
   public length$: Observable<number> = this.lengthSubject.asObservable();
 
   private allLength = new BehaviorSubject<number>(0);
-  allLength$ = this.allLength.asObservable();
+  public allLength$ = this.allLength.asObservable();
   private currentLength = new BehaviorSubject<number>(0);
-  currentLength$ = this.currentLength.asObservable();
+  public currentLength$ = this.currentLength.asObservable();
   private completedLength = new BehaviorSubject<number>(0);
-  completedLength$ = this.completedLength.asObservable();
+  public completedLength$ = this.completedLength.asObservable();
   private nameStatus = new BehaviorSubject<string>('active');
-  nameStatus$ = this.nameStatus.asObservable();
+  public nameStatus$ = this.nameStatus.asObservable();
 
   private todo_start: ITodo = {
     id: 1,
@@ -38,13 +38,13 @@ export class TodoService {
     status: '',
   } 
   private todo_ = new BehaviorSubject<ITodo>(this.todo_start);
-  todo_$ = this.todo_.asObservable();
+  public todo_$ = this.todo_.asObservable();
   setTodo(todo: ITodo){
     this.todo_.next(todo);
   }
 
   private isAdd = new BehaviorSubject<boolean>(false);
-  isAdd$ = this.isAdd.asObservable();
+  public isAdd$ = this.isAdd.asObservable();
   setIsAddTrue() {
     this.isAdd.next(true);
   }
@@ -53,7 +53,7 @@ export class TodoService {
   }
   
   private isUpdate = new BehaviorSubject<boolean>(false);
-  isUpdate$ = this.isUpdate.asObservable();
+  public isUpdate$ = this.isUpdate.asObservable();
   setIsUpdateTrue() {
     this.isUpdate.next(true);
   }
@@ -62,7 +62,7 @@ export class TodoService {
   }
 
   private isDelete = new BehaviorSubject<boolean>(false);
-  isDelete$ = this.isDelete.asObservable();
+  public isDelete$ = this.isDelete.asObservable();
   setIsDeleteTrue() {
     this.isDelete.next(true);
   }
@@ -71,7 +71,7 @@ export class TodoService {
   }
 
   private isClear = new BehaviorSubject<boolean>(false);
-  isClear$ = this.isClear.asObservable();
+  public isClear$ = this.isClear.asObservable();
   setIsClearTrue() {
     this.isClear.next(true);
   }
@@ -80,7 +80,7 @@ export class TodoService {
   }
 
   private openAddEditModal = new BehaviorSubject<boolean>(false);
-  openAddEditModal$ = this.openAddEditModal.asObservable();
+  public openAddEditModal$ = this.openAddEditModal.asObservable();
   setOpenAddEditModal(){
     this.openAddEditModal.next(true);
   }
@@ -89,7 +89,7 @@ export class TodoService {
   }
 
   private openDeleteClearModal = new BehaviorSubject<boolean>(false);
-  openDeleteClearModal$ = this.openDeleteClearModal.asObservable();
+  public openDeleteClearModal$ = this.openDeleteClearModal.asObservable();
   setOpenDeleteClearModal(){
     this.openDeleteClearModal.next(true);
   }
@@ -97,6 +97,42 @@ export class TodoService {
     this.openDeleteClearModal.next(false);
   }
 
+  private openAddToast = new BehaviorSubject<boolean>(false);
+  public openAddToast$ = this.openAddToast.asObservable();
+  setOpenAddToast(){
+    this.openAddToast.next(true);
+  }
+  setCloseAddToast(){
+    this.openAddToast.next(false);
+  }
+
+  private openUpdateToast = new BehaviorSubject<boolean>(false);
+  public openUpdateToast$ = this.openUpdateToast.asObservable();
+  setOpenUpdateToast(){
+    this.openUpdateToast.next(true);
+  }
+  setCloseUpdateToast(){
+    this.openUpdateToast.next(false);
+  }
+
+  private openDeleteToast = new BehaviorSubject<boolean>(false);
+  public openDeleteToast$ = this.openDeleteToast.asObservable();
+  setOpenDeleteToast(){
+    this.openDeleteToast.next(true);
+  }
+  setCloseDeleteToast(){
+    this.openDeleteToast.next(false);
+  }
+
+  private openClearToast = new BehaviorSubject<boolean>(false);
+  public openClearToast$ = this.openClearToast.asObservable();
+  setOpenClearToast(){
+    this.openClearToast.next(true);
+  }
+  setCloseClearToast(){
+    this.openClearToast.next(false);
+  }
+  
   constructor(private api: ApiService) {
     this.todo = {
       id: 1,
@@ -201,7 +237,6 @@ export class TodoService {
 
   deleteTodo(todo: ITodo){
     this.todo = todo;
-    console.log('todo = ', this.todo);
     this.api.deleteTodo(this.todo.id).subscribe({
       next: () => {
         this.getTodosFromApiService();

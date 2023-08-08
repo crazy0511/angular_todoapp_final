@@ -34,9 +34,7 @@ export class TodoItemComponent{
     this.todo.isCompleted = isCompleted;
     this.newTodo = {...this.todo};
     this.todoService.changeStatus();
-    if(this.newTodo.id != null){
-      this.todoService.updateTodo(this.newTodo);
-    }
+    this.todoService.updateTodo(this.newTodo);
   }
 
   getColorStatus(status: string): string{

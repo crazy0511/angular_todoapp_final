@@ -14,9 +14,6 @@ export class DeleteClearModalComponent {
   public isDelete: boolean = false;
   public isClear: boolean = false;
   public todoClearCompleted!: ITodo[];
-  
-  public isDeleteToast: boolean = false;
-  public isClearToast: boolean = false;
 
   constructor(private todoService: TodoService){}
 
@@ -37,23 +34,28 @@ export class DeleteClearModalComponent {
     this.todoService.setCloseDeleteClearModal();
   }
 
+  public todo!: ITodo;
   deleteTodo(){
+    console.log('Khởi chạy chức năng Delete');
     this.todoService.todo_$.subscribe((value) => {
-      this.todoService.deleteTodo(value);
+      this.todo = value;
     })
+    console.log('todo bị delete: ', this.todo);
+    this.todoService.deleteTodo(this.todo);
     this.closeModal();
+    this.todoService.setOpenDeleteToast();
   }
 
-
   clearCompletedTodos(){
-    this.todoService.todo$.subscribe((value) => {
+    console.log('Khởi chạy chức năng Clear');
+    this.todoService.todos$.subscribe((value) => {
       this.todoClearCompleted = value.filter(todo => todo.isCompleted);
     })
     for(const todo of this.todoClearCompleted){
       this.todoService.deleteTodo(todo);
     }
-    this.todoService.getTodosFromApiService();
     this.closeModal();
+    this.todoService.setOpenClearToast();
   }
 
   ngOnDestroy(): void {

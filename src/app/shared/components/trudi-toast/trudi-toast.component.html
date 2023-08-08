@@ -1,11 +1,11 @@
 <div id="toast">
-    <div class="toast toast-delete">
-      <div class="toast-icon">
-        <i class="fa-solid fa-trash"></i>
+    <div class="toast {{toastRole}}">
+      <div class="{{toastIcon}} toast-icon">
+        <i class="{{iconName}}"></i>
       </div>
       <div class="toast-body">
-        <h3 class="toast-title">Clear Completed Todo</h3>
-        <p class="toast-msg">You have successfully clear completed todos</p>
+        <h3 class="toast-title">{{title}}</h3>
+        <p class="toast-msg">{{message}}</p>
       </div>
       <div class="toast-close">
         <i class="fa-regular fa-circle-xmark"></i>

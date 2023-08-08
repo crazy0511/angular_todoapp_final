@@ -67,10 +67,23 @@
     cursor: pointer;
 }
 
+.toast-add{
+    border-color: green;
+}
+.toast-icon-add{
+    color: green;
+}
+
+.toast-update{
+    border-color: yellow;
+}
+.toast-icon-update{
+    color: yellow;
+}
+
 .toast-delete{
     border-color: red;
 }
-
-.toast-delete .toast-icon{
+.toast-icon-delete{
     color: red;
 }
