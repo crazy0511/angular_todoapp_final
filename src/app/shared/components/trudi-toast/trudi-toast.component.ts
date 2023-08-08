@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-trudi-toast',
@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
   templateUrl: './trudi-toast.component.html',
   styleUrls: ['./trudi-toast.component.scss']
 })
-export class TrudiToastComponent {
-
+export class TrudiToastComponent implements OnInit{
+  ngOnInit(): void{
+    console.log('Có chạy toast');
+  }
 }

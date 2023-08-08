@@ -20,16 +20,13 @@ export class TodoItemComponent{
   setUpdate() {
     this.todoService.setIsAddFalse();
     this.todoService.setIsUpdateTrue();
-    if(this.todo.id == null){
-      return;
-    }
     this.todoService.setTodo(this.todo);
   }
 
   setDelete(){
-    this.todoService.setClickDeleteClear();
     this.todoService.setIsDeleteTrue();
     this.todoService.setIsClearFalse();
+    this.todoService.setTodo(this.todo);
   }
   
   public newTodo!: ITodo; 

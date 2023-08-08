@@ -11,4 +11,5 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class TrudiDatePickerComponent {
   @Input() formControl!: FormControl;
+  @Input() name!: string;
 }

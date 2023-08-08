@@ -10,15 +10,10 @@ import { ITodo } from '../../models/todo.model';
 export class AddEditTodoComponent {
   @Input() isAdd!: boolean;
   @Input() isUpdate!: boolean;
-
-  constructor(private todoService: TodoService){
-  }
   
-  clickedButtonAdd(){
-    this.todoService.setClickAddEditModal();
-  }
-
-  clickedButtonUpdate(){
-    this.todoService.setClickAddEditModal();
+  constructor(private todoService: TodoService){}
+  
+  clickedButton(){
+    this.todoService.setOpenAddEditModal();
   }
 }

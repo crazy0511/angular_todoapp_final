@@ -17,6 +17,7 @@ import { DeleteClearModalComponent } from './components/delete-clear-modal/delet
 import { TrudiTextFieldComponent } from 'src/app/shared/components/trudi-text-field/trudi-text-field.component';
 import { TrudiDatePickerComponent } from 'src/app/shared/components/trudi-date-picker/trudi-date-picker.component';
 import { DeleteClearTodoComponent } from './components/delete-clear-todo/delete-clear-todo.component';
+import { TrudiToastComponent } from 'src/app/shared/components/trudi-toast/trudi-toast.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DeleteClearTodoComponent } from './components/delete-clear-todo/delete-
     TrudiButtonComponent,
     TrudiTextFieldComponent,
     TrudiDatePickerComponent,
+    TrudiToastComponent,
   ],
   exports: [
     TodoComponent,

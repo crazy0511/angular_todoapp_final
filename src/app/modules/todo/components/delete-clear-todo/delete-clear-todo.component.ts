@@ -10,15 +10,9 @@ export class DeleteClearTodoComponent {
   @Input() isDelete!: boolean;
   @Input() isClear!: boolean;
 
-  constructor(private todoService: TodoService){
-  }
+  constructor(private todoService: TodoService){}
   
-  clickedButtonDelete(){
-    this.todoService.setClickDeleteClear();
+  clickedButton(){
+    this.todoService.setOpenDeleteClearModal();
   }
-
-  clickedButtonClear(){
-    this.todoService.setClickDeleteClear();
-  }
-
 }

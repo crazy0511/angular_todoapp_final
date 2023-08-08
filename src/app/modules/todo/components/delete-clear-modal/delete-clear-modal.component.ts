@@ -10,17 +10,19 @@ import { ITodo } from '../../models/todo.model';
 })
 export class DeleteClearModalComponent {
   private unsubcribe$ = new Subject<void>();
-  public showModal: boolean = false;
+  public showDeleteClearModal: boolean = false;
   public isDelete: boolean = false;
   public isClear: boolean = false;
-  public todo!: ITodo;
+  public todoClearCompleted!: ITodo[];
+  
+  public isDeleteToast: boolean = false;
+  public isClearToast: boolean = false;
 
-  constructor(private todoService: TodoService){
-  }
+  constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
     this.todoService.openDeleteClearModal$.subscribe((value) => {
-      this.showModal = value;
+      this.showDeleteClearModal = value;
     })
     this.todoService.isDelete$.subscribe((value) => {
       this.isDelete = value;
@@ -31,21 +33,28 @@ export class DeleteClearModalComponent {
   }
 
   closeModal(){
-    this.showModal = false;
-    this.todoService.setCloseDeleteClear();
+    this.showDeleteClearModal = false;
+    this.todoService.setCloseDeleteClearModal();
   }
 
   deleteTodo(){
-    this.showModal = false;
-    this.todoService.setCloseDeleteClear();
     this.todoService.todo_$.subscribe((value) => {
-      this.todo = value;
-      this.todoService.deleteTodo(this.todo);
+      this.todoService.deleteTodo(value);
     })
     this.closeModal();
   }
 
-  clearCompletedTodos(){}
+
+  clearCompletedTodos(){
+    this.todoService.todo$.subscribe((value) => {
+      this.todoClearCompleted = value.filter(todo => todo.isCompleted);
+    })
+    for(const todo of this.todoClearCompleted){
+      this.todoService.deleteTodo(todo);
+    }
+    this.todoService.getTodosFromApiService();
+    this.closeModal();
+  }
 
   ngOnDestroy(): void {
     this.unsubcribe$.next();

@@ -1,4 +1,4 @@
-<div class="modal-overlay" [ngClass]="{'show': showModal }">
+<div class="modal-overlay" [ngClass]="{'show': showDeleteClearModal }">
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,8 +9,8 @@
         </div>
         
         <div class="modal-body">
-          <div class="title">Are you sure want to delete this todo?</div>
-          
+          <div *ngIf="isDelete" class="title">Are you sure want to delete this todo?</div>
+          <div *ngIf="isClear" class="title">Are you sure want to clear all completed todos?</div>
         </div>
   
         <div class="modal-footer">
@@ -21,12 +21,14 @@
           </app-trudi-button>
 
           <app-trudi-button
+            *ngIf="isDelete"
             [buttonName]="'delete'"
             (click)="deleteTodo()" 
           >
           </app-trudi-button>
 
           <app-trudi-button
+            *ngIf="isClear"
             [buttonName]="'clearCompleted'"
             (click)="clearCompletedTodos()" 
           >
@@ -34,3 +36,13 @@
         </div>
     </div>
   </div>
+
+  <!-- <app-trudi-toast
+    *ngIf="isDeleteToast"
+  >
+  </app-trudi-toast>
+
+  <app-trudi-toast 
+    *ngIf="isClearToast"
+  >
+  </app-trudi-toast> -->

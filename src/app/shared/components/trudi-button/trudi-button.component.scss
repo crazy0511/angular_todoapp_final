@@ -52,15 +52,17 @@ button {
     color: #220000;
     font-size: 14px;
     transition: transform 0.3s ease;
+    margin-right: 15px;
     &:hover{
-        transform: scale(1.05); 
+        transform: scale(1.1); 
     }
 }
 
 .clickButton {
-    border: 2px solid #0033FF;
-    color: #000022;
+    color: #993366;
     font-size: 16px;
+    transform: scale(1.1); 
+    font-weight: bold;
 }
 
 .clearCompleted {

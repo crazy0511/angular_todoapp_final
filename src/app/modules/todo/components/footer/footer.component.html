@@ -4,6 +4,12 @@
     </div>
 
     <div class="clear-completed">
-        <app-delete-clear-todo></app-delete-clear-todo>
+        <app-delete-clear-todo
+            *ngIf="hasCompleted"
+            [isDelete]="isDelete"
+            [isClear]="isClear"
+            (click)="setClear()"
+        >
+        </app-delete-clear-todo>
     </div>
 </div>

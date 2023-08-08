@@ -24,6 +24,8 @@ export class TodoService {
   allLength$ = this.allLength.asObservable();
   private currentLength = new BehaviorSubject<number>(0);
   currentLength$ = this.currentLength.asObservable();
+  private completedLength = new BehaviorSubject<number>(0);
+  completedLength$ = this.completedLength.asObservable();
   private nameStatus = new BehaviorSubject<string>('active');
   nameStatus$ = this.nameStatus.asObservable();
 
@@ -60,7 +62,7 @@ export class TodoService {
   }
 
   private isDelete = new BehaviorSubject<boolean>(false);
-  isDelete$ = this.isUpdate.asObservable();
+  isDelete$ = this.isDelete.asObservable();
   setIsDeleteTrue() {
     this.isDelete.next(true);
   }
@@ -69,7 +71,7 @@ export class TodoService {
   }
 
   private isClear = new BehaviorSubject<boolean>(false);
-  isClear$ = this.isUpdate.asObservable();
+  isClear$ = this.isClear.asObservable();
   setIsClearTrue() {
     this.isClear.next(true);
   }
@@ -79,7 +81,7 @@ export class TodoService {
 
   private openAddEditModal = new BehaviorSubject<boolean>(false);
   openAddEditModal$ = this.openAddEditModal.asObservable();
-  setClickAddEditModal(){
+  setOpenAddEditModal(){
     this.openAddEditModal.next(true);
   }
   setCloseAddEditModal(){
@@ -88,15 +90,16 @@ export class TodoService {
 
   private openDeleteClearModal = new BehaviorSubject<boolean>(false);
   openDeleteClearModal$ = this.openDeleteClearModal.asObservable();
-  setClickDeleteClear(){
+  setOpenDeleteClearModal(){
     this.openDeleteClearModal.next(true);
   }
-  setCloseDeleteClear(){
+  setCloseDeleteClearModal(){
     this.openDeleteClearModal.next(false);
   }
 
   constructor(private api: ApiService) {
     this.todo = {
+      id: 1,
       title: '',
       deadline: '',
       content: '',
@@ -113,6 +116,7 @@ export class TodoService {
       this.updateTodosShow();
       this.allLength.next(this.todos.length);
       this.currentLength.next(this.todos.filter(todo => !todo.isCompleted).length);
+      this.completedLength.next(this.todos.filter(todo => todo.isCompleted).length);
     });
   }
 
@@ -128,19 +132,16 @@ export class TodoService {
         this.filterTodos = this.todos.filter(todo => !todo.isCompleted);
         this.currentLength.next(this.filterTodos.length);
         this.nameStatus.next('active');
-        console.log('filterTodos sau khi Active: ', this.filterTodos);
         break;
       case EFilter.Completed:
         this.filterTodos = this.todos.filter(todo => todo.isCompleted);
         this.currentLength.next(this.filterTodos.length);
         this.nameStatus.next('completed');
-        console.log('filterTodos sau khi Completed: ', this.filterTodos);
         break;
       case EFilter.All:
         this.filterTodos = [...this.todos];
         this.currentLength.next(this.todos.filter(todo => !todo.isCompleted).length);
         this.nameStatus.next('active');
-        console.log('filterTodos sau khi All: ', this.filterTodos);
         break;
       default: 
         this.filterTodos = [...this.todos];
@@ -167,9 +168,7 @@ export class TodoService {
           todo.status = 'Active';
         }
       } else todo.status = 'Completed';
-      if(todo.id != null){
-        this.api.updateTodo(todo, todo.id);
-      }
+      this.api.updateTodo(todo, todo.id);
       this.api.getTodos();
     }
   }
@@ -179,8 +178,6 @@ export class TodoService {
     if(this.todo.title.trim() != '' && this.todo.deadline.trim() != '' && this.todo.content.trim() != ''){
       this.api.postTodo(this.todo).subscribe({
         next: () => {
-          const ref = document.getElementById('cancel');
-          ref?.click();
           this.getTodosFromApiService();
         },
         error: () => {
@@ -192,13 +189,8 @@ export class TodoService {
 
   updateTodo(todo: ITodo){
     this.todo = todo;
-    if(this.todo.id == null){
-      return;
-    }
     this.api.updateTodo(this.todo, this.todo.id).subscribe({
       next: () => {
-        const ref = document.getElementById('cancel');
-        ref?.click();
         this.getTodosFromApiService();
       },
       error: () => {
@@ -209,13 +201,9 @@ export class TodoService {
 
   deleteTodo(todo: ITodo){
     this.todo = todo;
-    if(this.todo.id == null){
-      return;
-    }
+    console.log('todo = ', this.todo);
     this.api.deleteTodo(this.todo.id).subscribe({
       next: () => {
-        const ref = document.getElementById('deleteCancel');
-        ref?.click();
         this.getTodosFromApiService();
       },
       error: () => {

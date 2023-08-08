@@ -11,7 +11,7 @@ import { ITodo } from '../../models/todo.model';
 })
 export class AddEditModalComponent implements OnInit, OnDestroy{
   private unsubcribe$ = new Subject<void>();
-  public showModal: boolean = false;
+  public showAddEditModal: boolean = false;
   public isAdd: boolean = false;
   public isUpdate: boolean = false;
   public todo!: ITodo;
@@ -26,6 +26,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
 
   constructor(private todoService: TodoService){
     this.todo = {
+      id: 1,
       title: '',
       deadline: '',
       content: '',
@@ -36,13 +37,16 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.todoService.openAddEditModal$.subscribe((value) => {
-      this.showModal = value;
+      this.showAddEditModal = value;
     })
     this.todoService.isAdd$.subscribe((value) => {
       this.isAdd = value;
+      console.log('isAdd = ', this.isAdd);
     })
     this.todoService.isUpdate$.subscribe((value) => {
       this.isUpdate = value;
+      console.log('isUpdate = ', this.isUpdate);
+
     })
     this.todoService.todo_$.subscribe((value) => {
       this.getTodo = value;
@@ -53,11 +57,10 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
   }
 
   closeModal(){
-    this.showModal = false;
+    this.showAddEditModal = false;
     this.todoService.setCloseAddEditModal();
   }
 
-  //Tạo formValue kiểu dữ liệu FromGroup
   formValue = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -71,7 +74,6 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     ]),
   });
 
-  // So sánh thời gian nhập với thời gian hiện tại
   compareCurrentTime(control: AbstractControl) {
     const inputTime = new Date(control.value);
     const currentTime = new Date();
@@ -96,6 +98,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
   postTodoDetails() {
     console.log('Khởi chạy chức năng Add');
     this.closeModal();
+    this.todo.id = new Date(Date.now()).getTime();
     if(this.formValue.value.title != null){
       this.todo.title = this.formValue.value.title; 
     }

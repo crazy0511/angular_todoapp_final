@@ -1,4 +1,4 @@
-<div class="modal-overlay" [ngClass]="{'show': showModal }">
+<div class="modal-overlay" [ngClass]="{'show': showAddEditModal }">
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -13,6 +13,7 @@
             <div>
               <label class="form-label">Title</label>
               <app-trudi-text-field 
+                [name]="'title'"
                 [formControl]="formValue.controls['title']"
               >
               </app-trudi-text-field>
@@ -28,7 +29,8 @@
             <div>
               <label class="form-label">Deadline</label>
               <app-trudi-date-picker
-              [formControl]="formValue.controls['deadline']"
+                [formControl]="formValue.controls['deadline']"
+                [name]="'deadline'"
               >
               </app-trudi-date-picker>
             </div>
@@ -46,6 +48,7 @@
               <label class="form-label">Content</label>
               <app-trudi-text-field 
                 [formControl]="formValue.controls['content']"
+                [name]="'content'"
               >
               </app-trudi-text-field>
             </div>
@@ -64,12 +67,14 @@
             (click)="closeModal()"
           >
           </app-trudi-button>
+
           <app-trudi-button
             *ngIf="isAdd"
             [buttonName]="'add'"
             (click)="postTodoDetails()" 
           >
           </app-trudi-button>
+
           <app-trudi-button
             *ngIf="isUpdate"
             [buttonName]="'edit'"
