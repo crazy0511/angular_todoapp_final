@@ -1,14 +1,14 @@
 <div id="toast">
-    <div class="toast {{toastRole}}">
-      <div class="{{toastIcon}} toast-icon">
-        <i class="{{iconName}}"></i>
-      </div>
-      <div class="toast-body">
-        <h3 class="toast-title">{{title}}</h3>
-        <p class="toast-msg">{{message}}</p>
-      </div>
-      <div class="toast-close">
-        <i class="fa-regular fa-circle-xmark"></i>
-      </div>
+  <div class="toast {{toastRole}}">
+    <div class="toast-icon">
+      <img src="{{linkIcon}}" alt="{{nameIcon}}" class="{{icon}}">
+    </div>
+    <div class="toast-body">
+      <h3 class="toast-title {{tilteRole}}">{{title}}</h3>
+      <p class="toast-msg">{{message}}</p>
+    </div>
+    <div class="toast-close">
+      <img src="../../assets/images/cancel.png" alt="Cancel" class="icon-cancel" (click)="handleClick()">
     </div>
   </div>
+</div>

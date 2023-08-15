@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EFilter, IFilterButton } from '../../models/filter.model';
-import { ITodo } from '../../models/todo.model';
-import { Observable } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
 
 @Component({

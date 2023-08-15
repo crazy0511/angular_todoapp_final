@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { ITodo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-add-edit-todo',

@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ITodo } from '../../models/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',

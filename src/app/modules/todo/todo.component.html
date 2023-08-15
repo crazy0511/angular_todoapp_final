@@ -6,48 +6,60 @@
     
         <app-footer class="footer"></app-footer>
     </div>
-</div>
-
-<app-add-edit-modal></app-add-edit-modal>
-
-<app-delete-clear-modal></app-delete-clear-modal>
-
-<app-trudi-toast
+  </div>
+  
+  <app-add-edit-modal></app-add-edit-modal>
+  
+  <app-delete-clear-modal></app-delete-clear-modal>
+  
+  <app-trudi-toast
     *ngIf="isAddToast"
-    [title]="'Add Todo'"
-    [message]="'Congratulations, you have successfully added todo'"
-    [iconName]="'fa-solid fa-circle-check'"
     [toastRole]="'toast-add'"
-    [toastIcon]="'toast-icon-add'"
->
-</app-trudi-toast>
-
-<app-trudi-toast
+    [title]="'Add Todo'"
+    [tilteRole]="'title-add'"
+    [message]="'You have successfully added todo'"
+    [linkIcon]="'../../assets/images/check-circle.png'"
+    [nameIcon]="'Add'"
+    [icon]="'icon-add'"
+    (clickEvent)="closeToast()"
+  >
+  </app-trudi-toast>
+  
+  <app-trudi-toast
     *ngIf="isUpdateToast"
-    [title]="'Update Todo'"
-    [message]="'You have successfully updated todo'"
-    [iconName]="'fa-sharp fa-regular fa-pen-to-square'"
     [toastRole]="'toast-update'"
-    [toastIcon]="'toast-icon-update'"
->
-</app-trudi-toast>
-
-<app-trudi-toast
+    [title]="'Update Todo'"
+    [tilteRole]="'title-update'"
+    [message]="'You have successfully updated todo'"
+    [linkIcon]="'../../assets/images/pen-to-square.png'"
+    [nameIcon]="'Update'"
+    [icon]="'icon-update'"
+    (clickEvent)="closeToast()"
+  >
+  </app-trudi-toast>
+  
+  <app-trudi-toast
     *ngIf="isDeleteToast"
+    [toastRole]="'toast-delete'"
     [title]="'Delete Todo'"
+    [tilteRole]="'title-delete'"
     [message]="'You have successfully deleted todo'"
-    [iconName]="'fa-solid fa-trash'"
-    [toastRole]="'toast-delete'"
-    [toastIcon]="'toast-icon-delete'"
->
-</app-trudi-toast>
-
-<app-trudi-toast
+    [linkIcon]="'../../assets/images/trash.png'"
+    [nameIcon]="'Delete'"
+    [icon]="'icon-delete'"
+    (clickEvent)="closeToast()"
+  >
+  </app-trudi-toast>
+  
+  <app-trudi-toast
     *ngIf="isClearToast"
-    [title]="'Clear Completed Todo'"
-    [message]="'You have successfully clear completed todo'"    
-    [iconName]="'fa-solid fa-trash'"
     [toastRole]="'toast-delete'"
-    [toastIcon]="'toast-icon-delete'"
->
-</app-trudi-toast>
+    [title]="'Clear Completed Todo'"
+    [tilteRole]="'title-delete'"
+    [message]="'You have successfully clear completed todo'"    
+    [linkIcon]="'../../assets/images/trash.png'"
+    [nameIcon]="'Delete'"
+    [icon]="'icon-delete'"
+    (clickEvent)="closeToast()"
+  >
+  </app-trudi-toast>

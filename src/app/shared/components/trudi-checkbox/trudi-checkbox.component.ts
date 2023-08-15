@@ -18,6 +18,5 @@ export class TrudiCheckboxComponent {
   changeChecked(){
     this.newIsCompledted = !this.isCompleted;
     this.__changeIsCompleted.emit(this.newIsCompledted);
-    // console.log('newIsCompleted: ', this.newIsCompledted);
   }
 }

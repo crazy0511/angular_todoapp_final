@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from './services/todo.service';
 
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -25,7 +24,26 @@ export class TodoComponent {
     });
     this.todoService.openClearToast$.subscribe((value) => {
       this.isClearToast = value;
-    })
+    });
+  }
+
+  closeToast(){
+    if(this.isAddToast == true){
+      this.isAddToast = false;
+      this.todoService.setCloseAddToast();
+    }
+    if(this.isUpdateToast == true){
+      this.isUpdateToast = false;
+      this.todoService.setCloseUpdateToast();
+    }
+    if(this.isDeleteToast == true){
+      this.isDeleteToast = false;
+      this.todoService.setCloseDeleteToast();
+    }
+    if(this.isClearToast == true){
+      this.isClearToast = false;
+      this.todoService.setCloseClearToast();
+    }
   }
 
 }

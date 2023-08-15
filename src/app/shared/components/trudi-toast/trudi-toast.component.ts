@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-trudi-toast',
@@ -10,8 +10,16 @@ import { Component, Input } from '@angular/core';
 })
 export class TrudiToastComponent {
   @Input() title!: string;
+  @Input() tilteRole!: string;
   @Input() message!: string;
-  @Input() iconName!: string;
+  @Input() linkIcon!: string;
+  @Input() nameIcon!: string;
+  @Input() icon!: string;
   @Input() toastRole!: string;
   @Input() toastIcon!: string;
+  @Output() clickEvent: EventEmitter<void> = new EventEmitter<void>();
+  
+  handleClick() {
+    this.clickEvent.emit();
+  }
 }

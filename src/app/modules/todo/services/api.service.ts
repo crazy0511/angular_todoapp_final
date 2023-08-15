@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ITodo } from '../models/todo.model';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ITodo } from '../models/todo.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
   constructor(private http: HttpClient) { }
+  link: string = 'https://64dae06e593f57e435b03b62.mockapi.io/api/todos/';
   postTodo(todo: ITodo) {
-    return this.http.post<ITodo>('http://localhost:3000/todos', todo).pipe(
+    return this.http.post<ITodo>(this.link, todo).pipe(
       map((res: ITodo) => {
         return res;
       })
@@ -18,7 +18,7 @@ export class ApiService {
   }
   
   getTodos() {
-    return this.http.get<ITodo[]>('http://localhost:3000/todos').pipe(
+    return this.http.get<ITodo[]>(this.link).pipe(
       map((res: ITodo[]) => {
         return res;
       })
@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   updateTodo(todo: ITodo, id: number) {
-    return this.http.put<ITodo>('http://localhost:3000/todos/' + id, todo).pipe(
+    return this.http.put<ITodo>(this.link + id, todo).pipe(
       map((res: ITodo) => {
         return res;
       })
@@ -34,7 +34,7 @@ export class ApiService {
   }
   
   deleteTodo(id: number) {
-    return this.http.delete<ITodo>('http://localhost:3000/todos/' + id).pipe(
+    return this.http.delete<ITodo>(this.link + id).pipe(
       map((res: ITodo) => {
         return res;
       })

@@ -13,7 +13,6 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoService: TodoService){}
 
-  // Gọi ra todos$ trong TodoService
   ngOnInit(): void {
     this.todoService.getTodosFromApiService();
     this.todos$ = this.todoService.todos$;
