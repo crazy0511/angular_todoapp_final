@@ -12,8 +12,7 @@ export class DeleteClearTodoComponent {
 
   constructor(private todoService: TodoService){}
   
-  clickedButton(){
-    console.log('sau khi click mở modal delete clear');
+  onClickedButton(){
     this.todoService.setOpenDeleteClearModal();
   }
 }

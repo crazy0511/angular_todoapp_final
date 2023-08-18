@@ -16,7 +16,7 @@ export class FilterTodoComponent {
   
   constructor(private todoService: TodoService){}
 
-  filter(type: EFilter){
+  onFilter(type: EFilter){
     this.setActiveFilterBtn(type);
     this.todoService.filterTodo(type);
   }

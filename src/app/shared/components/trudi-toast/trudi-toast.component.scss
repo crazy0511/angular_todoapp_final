@@ -52,6 +52,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #333;
+    margin-top: 10px;
 }
 
 .toast-msg{
@@ -67,23 +68,41 @@
     cursor: pointer;
 }
 
+
 .toast-add{
     border-color: green;
 }
-.toast-icon-add{
+.icon-add{
+    height: 30px;
+    width: 30px;
+}
+.title-add{
     color: green;
 }
 
 .toast-update{
     border-color: yellow;
 }
-.toast-icon-update{
+.icon-update{
+    height: 30px;
+    width: 30px;
+}
+.title-update{
     color: yellow;
 }
 
 .toast-delete{
     border-color: red;
 }
-.toast-icon-delete{
+.icon-delete{
+    height: 30px;
+    width: 30px;
+}
+.title-delete{
     color: red;
+}
+
+.icon-cancel{
+    height: 30px;
+    width: 30px;
 }

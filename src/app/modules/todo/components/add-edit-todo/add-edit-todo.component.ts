@@ -12,7 +12,7 @@ export class AddEditTodoComponent {
   
   constructor(private todoService: TodoService){}
   
-  clickedButton(){
+  onClickedButton(){
     this.todoService.setOpenAddEditModal();
   }
 }

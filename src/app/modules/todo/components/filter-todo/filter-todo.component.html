@@ -2,7 +2,7 @@
     <app-trudi-button
       *ngFor="let btn of filterButtons"
       [buttonName]="btn.label"
-      (click)="filter(btn.type)"
+      (click)="onFilter(btn.type)"
       [isClick]="btn.isActive"
     >
     </app-trudi-button>

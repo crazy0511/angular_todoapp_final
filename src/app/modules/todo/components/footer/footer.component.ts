@@ -24,7 +24,7 @@ export class FooterComponent implements OnInit{
     })
   }
 
-  setClear(){
+  onSetClear(){
     this.todoService.setIsDeleteFalse();
     this.todoService.setIsClearTrue();
   }

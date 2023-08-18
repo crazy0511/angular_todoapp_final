@@ -45,5 +45,4 @@ export class TodoComponent {
       this.todoService.setCloseClearToast();
     }
   }
-
 }

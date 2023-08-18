@@ -29,24 +29,24 @@ export class DeleteClearModalComponent {
     })
   }
 
-  closeModal(){
+  onCloseModal(){
     this.showDeleteClearModal = false;
     this.todoService.setCloseDeleteClearModal();
   }
 
   public todo!: ITodo;
-  deleteTodo(){
+  onDeleteTodo(){
     console.log('Khởi chạy chức năng Delete');
     this.todoService.todo_$.subscribe((value) => {
       this.todo = value;
     })
     console.log('todo bị delete: ', this.todo);
     this.todoService.deleteTodo(this.todo);
-    this.closeModal();
+    this.onCloseModal();
     this.todoService.setOpenDeleteToast();
   }
 
-  clearCompletedTodos(){
+  onClearCompletedTodos(){
     console.log('Khởi chạy chức năng Clear');
     this.todoService.todos$.subscribe((value) => {
       this.todoClearCompleted = value.filter(todo => todo.isCompleted);
@@ -54,7 +54,7 @@ export class DeleteClearModalComponent {
     for(const todo of this.todoClearCompleted){
       this.todoService.deleteTodo(todo);
     }
-    this.closeModal();
+    this.onCloseModal();
     this.todoService.setOpenClearToast();
   }
 

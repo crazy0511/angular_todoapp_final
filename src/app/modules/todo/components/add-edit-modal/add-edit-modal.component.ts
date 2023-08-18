@@ -53,7 +53,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     })
   }
 
-  closeModal(){
+  onCloseModal(){
     this.showAddEditModal = false;
     this.todoService.setCloseAddEditModal();
     this.formValue.reset();
@@ -93,7 +93,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
     return this.formValue.get('content');
   }
 
-  postTodoDetails() {
+  onPostTodoDetails() {
     console.log('Khởi chạy chức năng Add');
     this.todo.id = new Date(Date.now()).getTime();
     if(this.formValue.value.title != null){
@@ -111,7 +111,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
       console.log('todo add = ', this.todo);
       this.todoService.addTodo(this.todo);
     }
-    this.closeModal();
+    this.onCloseModal();
     this.todoService.setOpenAddToast();
   }
 
@@ -133,7 +133,7 @@ export class AddEditModalComponent implements OnInit, OnDestroy{
       console.log('todo update = ', this.todo);
       this.todoService.updateTodo(this.todo);
     }
-    this.closeModal();
+    this.onCloseModal();
     this.todoService.setOpenUpdateToast();
   }
 

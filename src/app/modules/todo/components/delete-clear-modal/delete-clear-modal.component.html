@@ -3,7 +3,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title">Delete Todo</h1>
-          <button type="button" class="btn-close" (click)="closeModal()">
+          <button type="button" class="btn-close" (click)="onCloseModal()">
             <img src="../../assets/images/cancel.png" alt="Cancel" class="cancel-icon">
           </button>
         </div>
@@ -16,21 +16,21 @@
         <div class="modal-footer">
           <app-trudi-button
             [buttonName]="'cancel'"
-            (click)="closeModal()"
+            (click)="onCloseModal()"
           >
           </app-trudi-button>
 
           <app-trudi-button
             *ngIf="isDelete"
             [buttonName]="'delete'"
-            (click)="deleteTodo()" 
+            (click)="onDeleteTodo()" 
           >
           </app-trudi-button>
 
           <app-trudi-button
             *ngIf="isClear"
             [buttonName]="'clearCompleted'"
-            (click)="clearCompletedTodos()" 
+            (click)="onClearCompletedTodos()" 
           >
           </app-trudi-button>
         </div>

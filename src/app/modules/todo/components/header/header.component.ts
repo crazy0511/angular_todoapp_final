@@ -16,7 +16,7 @@ export class HeaderComponent {
     this.todoService.getTodosFromApiService();
   }
 
-  setAdd() {
+  onSetAdd() {
     this.todoService.setIsAddTrue();
     this.todoService.setIsUpdateFalse();
   }
